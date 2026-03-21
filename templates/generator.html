@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Password Generator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron', sans-serif;
+}
+
+body{
+min-height:100vh;
+background:#020617;
+color:white;
+padding:40px;
+}
+
+/* back button */
+
+.back-btn{
+position:absolute;
+top:20px;
+left:20px;
+color:#00ffff;
+text-decoration:none;
+font-size:14px;
+opacity:0.8;
+transition:0.2s;
+}
+
+.back-btn:hover{
+opacity:1;
+text-shadow:0 0 8px #00ffff;
+}
+
+/* container */
+
+.dashboard{
+max-width:700px;
+margin:auto;
+padding:50px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(0,255,255,0.25);
+box-shadow:0 0 30px rgba(0,255,255,0.2);
+text-align:center;
+}
+
+/* title */
+
+.title{
+font-size:32px;
+letter-spacing:3px;
+margin-bottom:10px;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff;
+}
+
+.subtitle{
+font-size:14px;
+opacity:0.8;
+margin-bottom:30px;
+}
+
+/* password box */
+
+.password-box{
+margin:30px 0;
+padding:20px;
+border-radius:15px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(0,255,255,0.25);
+font-size:20px;
+letter-spacing:2px;
+}
+
+/* buttons */
+
+.btn{
+padding:12px 25px;
+border-radius:30px;
+cursor:pointer;
+transition:0.3s;
+text-decoration:none;
+display:inline-block;
+margin:10px;
+background:linear-gradient(90deg,#00ffff,#0066ff);
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00ffff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="/dashboard" class="back-btn">Back</a>
+
+<div class="dashboard">
+
+<h1 class="title">Password Generator</h1>
+<p class="subtitle">Generate strong secure passwords</p>
+
+<div class="password-box">
+{{password}}
+</div>
+
+<a href="/generator" class="btn">Generate New</a>
+
+<a href="/dashboard" class="btn">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

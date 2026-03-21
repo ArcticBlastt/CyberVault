@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Vault Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron', sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#020617;
+color:white;
+}
+
+/* login container */
+
+.login-box{
+width:350px;
+padding:40px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(0,255,255,0.25);
+box-shadow:0 0 30px rgba(0,255,255,0.2);
+text-align:center;
+}
+
+/* title */
+
+.title{
+font-size:28px;
+letter-spacing:3px;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff;
+margin-bottom:25px;
+}
+
+/* error popup */
+
+.error{
+background:#ff0033;
+padding:10px;
+border-radius:8px;
+margin-bottom:15px;
+font-size:13px;
+box-shadow:0 0 10px #ff0033;
+}
+
+/* inputs */
+
+.input-box{
+margin-bottom:15px;
+}
+
+.input-box input{
+width:100%;
+padding:12px;
+border:none;
+outline:none;
+border-radius:10px;
+background:rgba(255,255,255,0.08);
+color:white;
+}
+
+/* login button */
+
+.btn{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#00ffff,#0066ff);
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00ffff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h2 class="title">Vault Login</h2>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="error">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<form method="POST">
+
+<div class="input-box">
+<input type="text" name="username" placeholder="Username" required>
+</div>
+
+<div class="input-box">
+<input type="password" name="password" placeholder="Password" required>
+</div>
+
+<button class="btn" type="submit">Access Vault</button>
+<br><br>
+<a href="/register" style="color:#00ffff;">Create Account</a>
+
+</form>
+
+</div>
+
+</body>
+</html>

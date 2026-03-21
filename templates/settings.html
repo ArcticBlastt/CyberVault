@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Settings</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #020617;
+    color: #00ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CONTAINER */
+.container {
+    width: 420px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid #00ffff;
+    border-radius: 12px;
+    box-shadow: 0 0 25px #00ffff;
+}
+
+/* HEADINGS */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    background: transparent;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #00ffff;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #00ffff;
+}
+
+/* ACCOUNT INFO */
+.info {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+    margin-top: 15px;
+    background: transparent;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+}
+
+.logout-btn:hover {
+    background: #00ffff;
+    color: black;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>⚙ SYSTEM SETTINGS</h2>
+
+    <!-- ACCOUNT INFO -->
+    <div class="info">
+        <p>USER: {{ user.username }}</p>
+    </div>
+
+    <!-- CHANGE PASSWORD -->
+    <h3>CHANGE PASSWORD</h3>
+    <form method="POST" action="/change-password">
+        <input type="password" name="current_password" placeholder="CURRENT PASSWORD" required>
+        <input type="password" name="new_password" placeholder="NEW PASSWORD" required>
+        <button type="submit">UPDATE</button>
+    </form>
+
+    <!-- LOGOUT -->
+    <form action="/logout">
+        <button class="logout-btn">LOGOUT</button>
+    </form>
+
+</div>
+
+</body>
+</html>

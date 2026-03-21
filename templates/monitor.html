@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Security Monitor</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: Orbitron;
+    background: #020617;
+    color: #00ffff;
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+    text-shadow: 0 0 10px #00ffff;
+    margin-bottom: 20px;
+}
+
+.box {
+    border: 1px solid #00ffff;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.alert {
+    color: red;
+    font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>🛡 SECURITY MONITOR</h2>
+
+<div class="box">
+    <h3>Total Failed Attempts (Last 10 min)</h3>
+    <p>{{ total_failed }}</p>
+</div>
+
+<div class="box">
+    <h3>User Activity</h3>
+
+    {% for user in user_attempts %}
+        <p>
+            {{ user.username }} → {{ user.attempts }} attempts
+            {% if user.attempts >= 3 %}
+                <span class="alert">⚠ Suspicious</span>
+            {% endif %}
+        </p>
+    {% endfor %}
+</div>
+
+<div class="box">
+    <h3>Recent Activity</h3>
+
+    {% for log in recent_logs %}
+        <p>{{ log.username }} | {{ log.status }} | {{ log.time }}</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

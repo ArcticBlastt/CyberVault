@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Vault</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron', sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#020617;
+color:white;
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#00ffff33,transparent 70%);
+animation:floatGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow{
+0%{transform:translate(-100px,-50px);}
+100%{transform:translate(100px,50px);}
+}
+
+.vault{
+position:relative;
+padding:60px;
+width:420px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(0,255,255,0.25);
+box-shadow:0 0 30px rgba(0,255,255,0.2);
+text-align:center;
+z-index:1;
+}
+
+.title{
+font-size:40px;
+letter-spacing:4px;
+margin-bottom:10px;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff;
+}
+
+.subtitle{
+opacity:0.7;
+margin-bottom:40px;
+font-size:14px;
+}
+
+.btn{
+padding:14px 35px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#00ffff,#0066ff);
+color:white;
+font-size:14px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 25px #00ffff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="vault">
+
+<div class="title">VAULT</div>
+
+<div class="subtitle">
+Secure • Private • Encrypted
+</div>
+
+<a href="/login">
+<button class="btn">ENTER VAULT</button>
+</a>
+
+</div>
+
+</body>
+
+</html>

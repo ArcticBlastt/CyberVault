@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Vault Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron', sans-serif;
+}
+
+body{
+display:flex;
+min-height:100vh;
+background:#020617;
+color:white;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:240px;
+background:rgba(255,255,255,0.03);
+border-right:1px solid rgba(0,255,255,0.2);
+padding:30px 20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.sidebar h2{
+color:#00ffff;
+text-shadow:0 0 12px #00ffff;
+font-size:18px;
+margin-bottom:20px;
+}
+
+/* NAV LINKS */
+.nav-link{
+text-decoration:none;
+color:white;
+font-size:13px;
+padding:12px;
+border-radius:10px;
+transition:0.25s;
+position:relative;
+}
+
+/* ACTIVE LINK */
+.nav-link.active{
+background:rgba(0,255,255,0.15);
+color:#00ffff;
+box-shadow:0 0 10px rgba(0,255,255,0.3);
+}
+
+/* HOVER */
+.nav-link:hover{
+background:rgba(0,255,255,0.08);
+color:#00ffff;
+}
+
+/* MAIN */
+.main{
+flex:1;
+padding:45px;
+}
+
+/* HEADER */
+.title{
+font-size:34px;
+color:#00ffff;
+text-shadow:0 0 12px #00ffff;
+margin-bottom:6px;
+}
+
+.subtitle{
+font-size:13px;
+opacity:0.6;
+margin-bottom:30px;
+}
+
+/* CARDS */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:22px;
+margin-bottom:30px;
+}
+
+.card{
+padding:22px;
+border-radius:16px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(0,255,255,0.2);
+box-shadow:0 0 15px rgba(0,255,255,0.08);
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+/* subtle neon sweep */
+.card::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg, transparent, rgba(0,255,255,0.15), transparent);
+transition:0.5s;
+}
+
+.card:hover::after{
+left:100%;
+}
+
+.card:hover{
+transform:translateY(-3px);
+box-shadow:0 0 25px rgba(0,255,255,0.25);
+}
+
+.card h3{
+color:#00ffff;
+margin-bottom:10px;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.card p{
+font-size:13px;
+opacity:0.85;
+}
+
+/* ACTIVITY */
+.activity{
+padding:22px;
+border-radius:16px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(0,255,255,0.2);
+box-shadow:0 0 15px rgba(0,255,255,0.08);
+}
+
+.activity h3{
+color:#00ffff;
+margin-bottom:12px;
+}
+
+.activity li{
+font-size:13px;
+padding:8px 0;
+opacity:0.85;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+/* LOGOUT */
+.logout{
+margin-top:auto;
+padding-top:20px;
+}
+
+.logout a{
+text-decoration:none;
+color:#ff4d6d;
+font-size:13px;
+transition:0.2s;
+}
+
+.logout a:hover{
+text-shadow:0 0 10px #ff4d6d;
+}
+
+/* subtle pulse animation */
+@keyframes pulse {
+0% { box-shadow:0 0 5px rgba(0,255,255,0.2); }
+50% { box-shadow:0 0 20px rgba(0,255,255,0.4); }
+100% { box-shadow:0 0 5px rgba(0,255,255,0.2); }
+}
+
+.sidebar h2{
+animation:pulse 3s infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+<h2>CYBERVAULT</h2>
+
+<a href="/dashboard" class="nav-link active">🏠 Dashboard</a>
+<a href="/vault" class="nav-link">🔐 Vault</a>
+<a href="/generator" class="nav-link">🎲 Generator</a>
+<a href="/logs" class="nav-link">📊 Logs</a>
+<a href="/monitor" class="nav-link">🛡 Monitor</a>
+<a href="/settings" class="nav-link">⚙ Settings</a>
+
+<div class="logout">
+<a href="/logout">Logout</a>
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<h1 class="title">Vault Dashboard</h1>
+<p class="subtitle">Secure Access Control Panel</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>Username</h3>
+<p>{{ session['user'] }}</p>
+</div>
+
+<div class="card">
+<h3>Account Status</h3>
+<p>Active</p>
+</div>
+
+<div class="card">
+<h3>Security Level</h3>
+<p>Medium</p>
+</div>
+
+<div class="card">
+<h3>Last Login</h3>
+<p>Today</p>
+</div>
+
+</div>
+
+<div class="activity">
+
+<h3>Recent Activity</h3>
+
+<ul>
+<li>✔ Login successful</li>
+<li>✔ Password verified</li>
+<li>✔ Security token validated</li>
+<li>✔ Vault access granted</li>
+</ul>
+
+</div>
+
+</div>
+
+</body>
+</html>

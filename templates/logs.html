@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Security Logs</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: Orbitron;
+    background: #020617;
+    color: #00ffff;
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.log {
+    border: 1px solid #00ffff;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 10px #00ffff;
+}
+</style>
+</head>
+
+<body>
+
+<h2>⚠ Suspicious Activity (Last 24 Hours)</h2>
+
+{% for log in logs %}
+<div class="log">
+    <p>User: {{ log.username }}</p>
+    <p>Status: {{ log.status }}</p>
+    <p>Time: {{ log.time }}</p>
+</div>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #020617;
+    color: #00ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CONTAINER */
+.container {
+    width: 400px;
+    padding: 30px;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid #00ffff;
+    border-radius: 12px;
+    box-shadow: 0 0 25px #00ffff;
+}
+
+/* TITLE */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: transparent;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    outline: none;
+}
+
+input:focus {
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #00ffff;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #00ffff;
+}
+
+/* LINK */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #00ffff;
+    text-decoration: none;
+}
+
+/* FLASH MESSAGE */
+.flash {
+    text-align: center;
+    color: red;
+    margin-bottom: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🧾 REGISTER</h2>
+
+    <!-- FLASH -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="flash">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <input type="text" name="username" placeholder="USERNAME" required>
+        <input type="password" name="password" placeholder="PASSWORD" required>
+
+        <button type="submit">CREATE ACCOUNT</button>
+
+    </form>
+
+    <a href="/login">Already have an account? Login</a>
+
+</div>
+
+</body>
+</html>
