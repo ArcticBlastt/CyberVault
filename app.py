@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
 
-# ---------------- DATABASE CONNECTION ----------------
+
 
 def get_db_connection():
     conn = sqlite3.connect("users.db")
@@ -18,14 +18,14 @@ def get_db_connection():
     return conn
 
 
-# ---------------- HOME ----------------
+
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
-# ---------------- LOGIN ----------------
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -38,7 +38,7 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # 🚫 Check failed attempts in last 24 hours
+   
         last_24 = (datetime.now() - timedelta(hours=24)).isoformat()
 
         cursor.execute(
@@ -49,7 +49,7 @@ def login():
         attempts = cursor.fetchone()[0]
 
         if attempts >= 3:
-            flash("⚠️ Account locked due to suspicious activity (3 failed attempts)")
+            flash(" Account locked due to suspicious activity (3 failed attempts)")
             conn.close()
             return redirect(url_for("login"))
 
@@ -69,7 +69,7 @@ def login():
 
             if bcrypt.checkpw(password.encode(), stored_password):
 
-                # ✅ SUCCESS LOG
+                #  SUCCESS LOG
                 cursor.execute(
                     "INSERT INTO logs (username, status, time) VALUES (?,?,?)",
                     (username, "SUCCESS", datetime.now().isoformat())
@@ -87,7 +87,7 @@ def login():
         else:
             status = "FAILED"
 
-        # ❌ FAILED LOG
+        #  FAILED LOG
         cursor.execute(
             "INSERT INTO logs (username, status, time) VALUES (?,?,?)",
             (username, status, datetime.now().isoformat())
@@ -101,7 +101,7 @@ def login():
     return render_template("login.html")
 
 
-# ---------------- REGISTER ----------------
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -130,7 +130,7 @@ def register():
     return render_template("register.html")
 
 
-# ---------------- DASHBOARD ----------------
+
 
 @app.route("/dashboard")
 def dashboard():
@@ -141,7 +141,7 @@ def dashboard():
     return redirect(url_for("login"))
 
 
-# ---------------- VAULT ----------------
+
 
 @app.route("/vault")
 def vault():
@@ -171,7 +171,7 @@ def vault():
     return render_template("vault.html", passwords=passwords)
 
 
-# ---------------- ADD PASSWORD ----------------
+
 
 @app.route("/add_password", methods=["POST"])
 def add_password():
@@ -204,7 +204,7 @@ def add_password():
     return redirect(url_for("vault"))
 
 
-# ---------------- LOGOUT ----------------
+
 
 @app.route("/logout")
 def logout():
@@ -213,7 +213,7 @@ def logout():
     return redirect(url_for("login"))
 
 
-# ---------------- PASSWORD GENERATOR ----------------
+
 
 @app.route("/generator")
 def generator():
@@ -224,7 +224,7 @@ def generator():
     return render_template("generator.html", password=password)
 
 
-# ---------------- LOGS (INTRUSION MONITOR) ----------------
+
 
 @app.route("/logs")
 def logs():
@@ -248,7 +248,7 @@ def logs():
     return render_template("logs.html", logs=logs)
 
 
-# ---------------- SETTINGS ----------------
+
 
 @app.route("/settings")
 def settings():
@@ -270,7 +270,7 @@ def settings():
     return render_template("settings.html", user=user)
 
 
-# ---------------- CHANGE PASSWORD ----------------
+
 
 @app.route("/change-password", methods=["POST"])
 def change_password():
